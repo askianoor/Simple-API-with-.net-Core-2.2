@@ -55,22 +55,39 @@ namespace SimpleAPI.Controllers
 
 
         // Add a new item to the list -> like ( api/values )
+        /// <summary>
+        /// It is just a sample code to show how it work which has done exactly nothing on the original list
+        /// </summary>
         [HttpPost]
         public void AddProduct(Product product)
         {
-
+            products.Add(product);
         }
 
         // Update an item from list -> like ( api/values/5 )
+        /// <summary>
+        /// It is just a sample code to show how it work which has done exactly nothing on the original list
+        /// </summary>
+        /// <param name="id">Product Id</param>
         [HttpPut("{id}")]
         public void UpdateProduct(int id, Product product)
         {
-
+            var tempProduct = products.FirstOrDefault((p) => p.ProductId == id);
+            //we will check if this id exist or not
+            if (product != null)
+            {
+                tempProduct = product;
+            }
         }
 
-        // DELETE a product from List -> like (api/Products/1)
+        // DELETE a product from List -> like (api/Products/1) 
+        /// <summary>
+        /// It is just a sample code to show how it work which has done exactly nothing on the original list
+        /// </summary>
+        /// <param name="id">Product Id</param>
+        /// <returns>A temperory list of product which is manipulated by API</returns>
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult<IEnumerable<Product>> Delete(int id)
         {
             //find the product that we want to remove from list
             var product = products.FirstOrDefault((p) => p.ProductId == id);
@@ -79,6 +96,7 @@ namespace SimpleAPI.Controllers
             if (product!=null)
                 products.Remove(product);
 
+            return products;
         }
     }
 }
