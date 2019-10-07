@@ -22,6 +22,7 @@ namespace SimpleAPI.Controllers
                 new Product{ProductId =3, Name="Monitor", Category="Computer Parts", Price=50}
         };
 
+        // You can Define an array List if u like and work with that
         //Product[] products = new Product[]
         //    {
         //        new Product{ProductId =1, Name="Keyboard", Category="Computer Parts", Price=10},
@@ -53,16 +54,16 @@ namespace SimpleAPI.Controllers
         }
 
 
-        // POST api/values
+        // Add a new item to the list -> like ( api/values )
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void AddProduct(Product product)
         {
 
         }
 
-        // PUT api/values/5
+        // Update an item from list -> like ( api/values/5 )
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void UpdateProduct(int id, Product product)
         {
 
         }
